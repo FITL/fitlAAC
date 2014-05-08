@@ -110,7 +110,12 @@
 	<div>
 	<h1><font color="white">Welcome to NYU Polytechnic School of Engineering</font> </h1>	
 	<p><font color="white">The New York University Polytechnic School of Engineering offers programs in engineering, applied sciences, technology and research, and is rooted in a 160-year tradition of invention, innovation and entrepreneurship: i2e.</font></p>
-	<p><a href="#modal_video" class="btn go">Intro Video</a></p>
+	<form method="post" action="updateVidInfo">
+			<input type="hidden" name="panelNo" value="1">	
+			<center><table>
+				<tr><td><font face="verdana,arial" size=-1>&nbsp;</td><td><font face="verdana,arial" size=-1><input type="submit" value="Intor Video"></font></td></tr>
+			</table></center>
+	</form>
 <div id="video_container"></div>
 	</div>
 	<div id="modal">

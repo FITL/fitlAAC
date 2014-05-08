@@ -7,7 +7,7 @@ public class UpdateStudentInfo {
 	StudentInfo st;
 	String NetID;
 	
-	UpdateStudentInfo(String netID){
+	public UpdateStudentInfo(String netID){
 		this.NetID=netID;
 		try{
 			st=(StudentInfo)ser.readJavaObject(this.NetID);
@@ -31,8 +31,17 @@ public class UpdateStudentInfo {
 	void updateTimeSpent(Timestamp Time,int PanelNo){
 		st.panelTimeSpentArr[PanelNo]=Time;
 	}
-	void updateNoOfTimesVideoWatched(int PanelNo){
+	public void updateNoOfTimesVideoWatched(int PanelNo){
 		st.noOfTimesVideoWatched[PanelNo]++;
+		System.out.println("Intro Video Wactched: "+st.noOfTimesVideoWatched[PanelNo]);
+		try{
+			if(ser.writeJavaObject(NetID, st)){
+				System.out.println("Video info updated");
+			}
+		}catch(Exception e){
+			System.out.println("Inside updateNoOfTimesVideoWatched" );
+			e.printStackTrace();
+		}
 	}
 	void updateQuizScore(int PanelNo, int score){
 		st.quizScore[PanelNo]=score;

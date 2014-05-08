@@ -10,36 +10,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fitlAAC.apis.UpdateStudentInfo;
+
 /**
- * Servlet implementation class SOECurriculumServlet
+ * Servlet implementation class UpdateVideoInfoServlet
  */
-@WebServlet("/SOECurriculumServlet")
-public class SOECurriculumServlet extends HttpServlet {
+@WebServlet("/UpdateVideoInfoServlet")
+public class UpdateVideoInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SOECurriculumServlet() {
+    public UpdateVideoInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nav=request.getParameter("navigation");
-		RequestDispatcher view;
-		System.out.println("Servlet Post:Inside SOE Curriculum Servlet");
 		HttpSession session = request.getSession();
 		String netID=(String)session.getAttribute("NetID");
-		if(nav.equals("next")) 
-		{
-			view=request.getRequestDispatcher("student_tour/SOEcurriculum.jsp");
-			view.forward(request, response);
-		}
+		String panelNo=request.getParameter("panelNo");
+		int pno = Integer.parseInt(panelNo);
+		UpdateStudentInfo up = new UpdateStudentInfo(netID);
+		up.updateNoOfTimesVideoWatched(pno);
+		RequestDispatcher view;
+		view=request.getRequestDispatcher("student_tour/introduction.jsp");
+		view.forward(request, response);
+		
 	}
 
 }

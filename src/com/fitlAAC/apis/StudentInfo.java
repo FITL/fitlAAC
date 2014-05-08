@@ -13,4 +13,7 @@ public class StudentInfo implements Serializable{
 	int noOfTimesVideoWatched[];
 	int quizScore[];
 	int quizAtempts[];
+	public StudentInfo(){
+		noOfTimesVideoWatched= new int[8];
+	}
 }

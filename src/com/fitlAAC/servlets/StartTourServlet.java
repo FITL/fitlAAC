@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fitlAAC.apis.TestSer;
 
@@ -23,14 +24,15 @@ public class StartTourServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view;
 		System.out.println("Servlet Post:Inside Start Tour Servlet");
+		HttpSession session = request.getSession();
+		/*
+		System.out.println("Session Info: "+session.getAttribute("NetID"));
 		System.out.println("Serializing inside servlet");
 		TestSer test=new TestSer();
 		test.testUpdate();
 		System.out.println("Done serializing from servlet");
+		*/
 		view=request.getRequestDispatcher("student_tour/introduction.jsp");
 		view.forward(request, response);
-		
-		
 	}
-
 }

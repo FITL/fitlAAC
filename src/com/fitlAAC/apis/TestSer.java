@@ -27,7 +27,7 @@ public class TestSer {
 			   Statement statement = null;
 			   ResultSet rs = null;
 			   statement = (Statement) connection.createStatement();
-			   String QueryStr="select student_id,first_name,last_name,s_email from student where student_id='123'";
+			   String QueryStr="select student_id,first_name,last_name,s_email from student where student_id='NYU456'";
 			   rs = statement.executeQuery(QueryStr);
 			   while(rs.next()){
 				   st.netID = rs.getString("student_id");
@@ -47,7 +47,7 @@ public class TestSer {
 			   System.out.println("Student Name: "+getst.fName+" "+getst.lName);
 			   System.out.println("Student NetID: "+ getst.netID);
 			   System.out.println("email: "+getst.sEmail);
-			   
+			   System.out.println("No of times video of panel 1 watched: "+getst.noOfTimesVideoWatched[1]);
 		  }catch (Exception e){
  			  e.printStackTrace();
 		 }

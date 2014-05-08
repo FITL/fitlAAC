@@ -85,4 +85,13 @@
     <servlet-name>assessmentservlet</servlet-name>
     <url-pattern>/assessment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>UpdateVideoInfo</display-name>
+    <servlet-name>updatevidinfoservlet</servlet-name>
+    <servlet-class>com.fitlAAC.servlets.UpdateVideoInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updatevidinfoservlet</servlet-name>
+    <url-pattern>/updateVidInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
