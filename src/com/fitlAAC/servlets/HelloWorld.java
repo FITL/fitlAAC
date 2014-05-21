@@ -1,28 +1,23 @@
 package com.fitlAAC.servlets;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.fitlAAC.apis.UpdateStudentInfo;
 
 /**
- * Servlet implementation class UpdateVideoInfoServlet
+ * Servlet implementation class HelloWorld
  */
-@WebServlet("/UpdateVideoInfoServlet")
-public class UpdateVideoInfoServlet extends HttpServlet {
+@WebServlet("/HelloWorld")
+public class HelloWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateVideoInfoServlet() {
+    public HelloWorld() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +27,7 @@ public class UpdateVideoInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -39,19 +35,8 @@ public class UpdateVideoInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		String netID=(String)session.getAttribute("NetID");
-		String panelNo=request.getParameter("panelNo");
-		
-		int pno = Integer.parseInt(panelNo);
-		System.out.println("check:"+netID);
-		UpdateStudentInfo up = new UpdateStudentInfo(netID);
-		
-		up.updateNoOfTimesVideoWatched(pno);
-		RequestDispatcher view;
-		view=request.getRequestDispatcher("student_tour/introduction.jsp");
-		view.forward(request, response);
-		
+		response.setContentType("text/html");
+	    response.getWriter().write("Hello World!");
 	}
 
 }

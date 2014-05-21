@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class StudentInfo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String netID;
 	public String fName;
 	String lName;

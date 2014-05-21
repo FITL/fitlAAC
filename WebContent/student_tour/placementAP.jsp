@@ -74,7 +74,8 @@
 </html>
 <script>
 function DisplayPopUp(sender, text) {
-    var data = text;
+    
+	var data = text;
     if (data == "") {
         data = sender.innerHTML;
     }

@@ -94,4 +94,13 @@
     <servlet-name>updatevidinfoservlet</servlet-name>
     <url-pattern>/updateVidInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>helloWorld</servlet-name>
+    <servlet-class>com.fitlAAC.servlets.HelloWorld</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>helloWorld</servlet-name>
+    <url-pattern>/helloWorld</url-pattern>
+  </servlet-mapping>
 </web-app>

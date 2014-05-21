@@ -33,6 +33,34 @@
 				  margin: 20px auto;
 				  text-align: center;
 		  }
+		  .masking-window {
+		    display: none;
+		    position: absolute;
+		    top: 0%;
+		    left: 0%;
+		    width: 100%;
+		    height: 120%;
+		    background-color: black;
+		    z-index: 1001;
+		    -moz-opacity: 0.4;
+		    opacity: .80;
+		    filter: alpha(opacity=80);
+			}
+		
+		.popup-window {
+		    display: none;
+		    position: absolute;
+		    top: 20%;
+		    left: 20%;
+		    width: 50%;
+		    height: auto;
+		    padding: 16px;
+		    border: 10px solid #E2A9F3;
+		    background-color: #ECCEF5;
+		    z-index: 1002;
+		    overflow: auto;
+		    border-radius:5px;
+		}
 	      
 	</style>
 	<link href="css/demo_modal.css" rel="stylesheet">
@@ -95,7 +123,7 @@
 	
 		google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
+	<script type="text/javascript" language="javascript" src="js/ajax.js"></script>
 </head>
 <body bgcolor="#57068c">
 	<h1><center><font color="white">Introduction</font></center></h1>
@@ -106,16 +134,37 @@
 				<tr><td><font face="verdana,arial" size=-1>&nbsp;</td><td><font face="verdana,arial" size=-1><input type="submit" value="Next"></font></td></tr>
 			</table></center>
 	</form>
+	<button onclick="DisplayPopUp(this, '2');">Next Poll</button>
 	<div id="map-canvas"></div>
 	<div>
 	<h1><font color="white">Welcome to NYU Polytechnic School of Engineering</font> </h1>	
 	<p><font color="white">The New York University Polytechnic School of Engineering offers programs in engineering, applied sciences, technology and research, and is rooted in a 160-year tradition of invention, innovation and entrepreneurship: i2e.</font></p>
-	<form method="post" action="updateVidInfo">
-			<input type="hidden" name="panelNo" value="1">	
-			<center><table>
-				<tr><td><font face="verdana,arial" size=-1>&nbsp;</td><td><font face="verdana,arial" size=-1><input type="submit" value="Intor Video"></font></td></tr>
-			</table></center>
-	</form>
+	<div id="toolTip" class="popup-window">
+    <h2></h2>
+            <div id="d1">
+            	<video width="100%" height="100%" controls>
+  				<source src="movie.mp4" type="video/mp4">
+  				<source src="movie.ogg" type="video/ogg">
+  				Your browser does not support the video tag.
+				</video>
+            </div>
+            <div id="d2">
+            	<form action="">
+            		<h1>Quiz Question</h1>
+					<input type="radio" name="quiz" value="1">Answer 1<br>
+					<input type="radio" name="quiz" value="2">Answer 2<br>
+					<input type="radio" name="quiz" value="3">Answer 3<br>
+					<input type="radio" name="quiz" value="4">Answer 4<br>
+					<button id="btnClose" onclick="ClosePopup(); return false;" class="right">Submit & move to next Panel</button>
+				</form>
+				
+            </div>
+            <div>
+            	<button id="btnClose" onclick="ClosePopup(); return false;" class="right">Close</button>
+			</div>
+        </div>
+        <div id="mask" class="masking-window"></div>
+		<center><button onclick="DisplayPopUp(this, '1');">Introduction Video</button></center>
 <div id="video_container"></div>
 	</div>
 	<div id="modal">
@@ -170,3 +219,39 @@
 	</script>
 </body>
 </html>
+
+<script>
+function DisplayPopUp(sender, text) {
+	var panelNo=1;
+	makeRequest(panelNo);
+	var data = text;
+    if (data == "") {
+        data = sender.innerHTML;
+    }
+
+    var toolTip = document.getElementById("toolTip");
+    //toolTip.childNodes[3].innerHTML = data;
+    //toolTip.childNodes[1].innerHTML = heading;
+
+    toolTip.style.display = 'block';
+    document.getElementById('mask').style.display = 'block';
+    document.getElementById('d1').style.display = 'block';
+    if(text== '2')
+    {
+    	document.getElementById('d1').style.display = 'none';
+    	document.getElementById('d2').style.display = 'block';
+	}
+    if(text== '1')
+    {
+    	document.getElementById('d1').style.display = 'block';
+    	document.getElementById('d2').style.display = 'none';
+	}
+}
+
+// Hide popup
+function ClosePopup() {
+    document.getElementById('toolTip').style.display = 'none';
+    document.getElementById('mask').style.display = 'none';
+}
+
+</script>
