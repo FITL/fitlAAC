@@ -42,16 +42,25 @@ public class UpdateVideoInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String netID=(String)session.getAttribute("NetID");
 		String panelNo=request.getParameter("panelNo");
-		
+		String type=request.getParameter("type");
 		int pno = Integer.parseInt(panelNo);
-		System.out.println("check:"+netID);
-		UpdateStudentInfo up = new UpdateStudentInfo(netID);
-		
-		up.updateNoOfTimesVideoWatched(pno);
-		RequestDispatcher view;
-		view=request.getRequestDispatcher("student_tour/introduction.jsp");
-		view.forward(request, response);
-		
+		if(type.equals("start")){
+			UpdateStudentInfo up = new UpdateStudentInfo(netID);
+			up.updateStartTimeOfVideo(pno);
+			//up.updateNoOfTimesVideoWatched(pno);
+			//RequestDispatcher view;
+			//view=request.getRequestDispatcher("student_tour/introduction.jsp");
+			//view.forward(request, response);			
+		}
+		if(type.equals("end")){
+			System.out.println("end");
+			UpdateStudentInfo up = new UpdateStudentInfo(netID);
+			up.updateEndTimeOfVideo(pno);
+			//up.updateNoOfTimesVideoWatched(pno);
+			RequestDispatcher view;
+			view=request.getRequestDispatcher("student_tour/introduction.jsp");
+			view.forward(request, response);			
+		}
 	}
 
 }

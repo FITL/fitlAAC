@@ -30,11 +30,10 @@ function getXMLHttpRequest() {
 /*
  * AJAX call starts with this function
  */
-function makeRequest(panelNo) {
+function makeRequest(panelNo,type) {
   var xmlHttpRequest = getXMLHttpRequest();
   xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
-  //params = "panelNo=" + panelNo + "&txt=" + txt;
-  xmlHttpRequest.open("POST", "updateVidInfo"+"?panelNo="+panelNo, true);
+  xmlHttpRequest.open("POST", "updateVidInfo"+"?panelNo="+panelNo+"&type="+type, true);
   xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   xmlHttpRequest.send(null);
 }

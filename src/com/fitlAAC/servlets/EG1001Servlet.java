@@ -23,6 +23,10 @@ public class EG1001Servlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

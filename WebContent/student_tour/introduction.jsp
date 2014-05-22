@@ -124,6 +124,7 @@
 		google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 	<script type="text/javascript" language="javascript" src="js/ajax.js"></script>
+
 </head>
 <body bgcolor="#57068c">
 	<h1><center><font color="white">Introduction</font></center></h1>
@@ -134,7 +135,10 @@
 				<tr><td><font face="verdana,arial" size=-1>&nbsp;</td><td><font face="verdana,arial" size=-1><input type="submit" value="Next"></font></td></tr>
 			</table></center>
 	</form>
-	<button onclick="DisplayPopUp(this, '2');">Next Poll</button>
+	
+
+    
+	<button onclick="DisplayPopUp(this, '2','poll');">Next Poll</button>
 	<div id="map-canvas"></div>
 	<div>
 	<h1><font color="white">Welcome to NYU Polytechnic School of Engineering</font> </h1>	
@@ -155,16 +159,16 @@
 					<input type="radio" name="quiz" value="2">Answer 2<br>
 					<input type="radio" name="quiz" value="3">Answer 3<br>
 					<input type="radio" name="quiz" value="4">Answer 4<br>
-					<button id="btnClose" onclick="ClosePopup(); return false;" class="right">Submit & move to next Panel</button>
+					<button id="btnClose" onclick="ClosePopup('video'); return false;" class="right">Submit and move to next Panel</button>
 				</form>
 				
             </div>
             <div>
-            	<button id="btnClose" onclick="ClosePopup(); return false;" class="right">Close</button>
+            	<button id="btnClose" onclick="ClosePopup('video'); return false;" class="right">Close</button>
 			</div>
         </div>
         <div id="mask" class="masking-window"></div>
-		<center><button onclick="DisplayPopUp(this, '1');">Introduction Video</button></center>
+		<center><button onclick="DisplayPopUp(this, '1','video');">Introduction Video</button></center>
 <div id="video_container"></div>
 	</div>
 	<div id="modal">
@@ -221,9 +225,14 @@
 </html>
 
 <script>
-function DisplayPopUp(sender, text) {
+function DisplayPopUp(sender, text,type) {
 	var panelNo=1;
-	makeRequest(panelNo);
+	if(type=="video")
+	{
+		
+		makeRequest(panelNo,'start');
+	}
+	
 	var data = text;
     if (data == "") {
         data = sender.innerHTML;
@@ -249,9 +258,14 @@ function DisplayPopUp(sender, text) {
 }
 
 // Hide popup
-function ClosePopup() {
+function ClosePopup(type) {
+	var panelNo=1;
     document.getElementById('toolTip').style.display = 'none';
     document.getElementById('mask').style.display = 'none';
+    if(type=='video')
+	{
+    	makeRequest(panelNo,'end');
+	}
 }
 
 </script>

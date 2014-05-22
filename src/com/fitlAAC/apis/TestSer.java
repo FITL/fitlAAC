@@ -27,7 +27,7 @@ public class TestSer {
 			   Statement statement = null;
 			   ResultSet rs = null;
 			   statement = (Statement) connection.createStatement();
-			   String QueryStr="select student_id,first_name,last_name,s_email from student where student_id='NYU456'";
+			   String QueryStr="select student_id,first_name,last_name,s_email from student where student_id='123'";
 			   rs = statement.executeQuery(QueryStr);
 			   while(rs.next()){
 				   st.netID = rs.getString("student_id");

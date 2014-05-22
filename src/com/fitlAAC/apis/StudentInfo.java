@@ -20,11 +20,15 @@ public class StudentInfo implements Serializable{
 	int noOfTimesVideoWatched[];
 	int quizScore[];
 	int quizAtempts[];
+	String[] videoStartTime;
+	String[] videoEndTime;
 	public StudentInfo(){
 		noOfTimesVideoWatched= new int[9];
 		panelTimeStartArr= new Timestamp[9];
 		panelTimeEndArr= new Timestamp[9];
 		panelTimeSpentArr= new Timestamp[9];
+		videoStartTime=new String[9];
+		videoEndTime=new String[9];
 		quizScore= new int[9];
 		quizAtempts= new int[9];
 	}
